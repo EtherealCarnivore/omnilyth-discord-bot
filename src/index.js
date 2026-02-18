@@ -60,7 +60,14 @@ app.post('/webhook/github', async (req, res) => {
       .setFooter({ text: 'Omnilyth Bug Tracker' });
 
     if (notificationChannel) {
-      await notificationChannel.send({ embeds: [embed] });
+      const content = process.env.DISCORD_ROLE_ID
+        ? `<@&${process.env.DISCORD_ROLE_ID}>`
+        : undefined;
+
+      await notificationChannel.send({
+        content,
+        embeds: [embed]
+      });
       console.log(`✅ Sent notification for issue #${issue.number}`);
     }
   }
@@ -84,7 +91,14 @@ app.post('/webhook/deployment', async (req, res) => {
     .setFooter({ text: 'Omnilyth Deployment' });
 
   if (notificationChannel) {
-    await notificationChannel.send({ embeds: [embed] });
+    const content = process.env.DISCORD_ROLE_ID
+      ? `<@&${process.env.DISCORD_ROLE_ID}>`
+      : undefined;
+
+    await notificationChannel.send({
+      content,
+      embeds: [embed]
+    });
     console.log(`✅ Sent deployment notification for v${version}`);
   }
 

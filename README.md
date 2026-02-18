@@ -22,10 +22,16 @@ Discord bot that notifies about GitHub issues and deployments for the Omnilyth p
    - Bot Permissions: `Send Messages`, `Embed Links`
 7. Copy the generated URL and open it to invite bot to your server
 
-### 2. Get Channel ID
+### 2. Get Channel ID and Role ID
 
+**Channel ID:**
 1. Enable Discord Developer Mode (User Settings → Advanced → Developer Mode)
 2. Right-click your notification channel → "Copy Channel ID"
+
+**Role ID (optional - for @mentions):**
+1. Create a role in your server (e.g., "Dev Team", "Bug Squad")
+2. Right-click the role → "Copy Role ID"
+   - Or type `\@RoleName` in chat to see the ID
 
 ### 3. Local Development
 
@@ -39,6 +45,7 @@ cp .env.example .env
 # Edit .env with your values:
 # DISCORD_TOKEN=your_bot_token
 # DISCORD_CHANNEL_ID=your_channel_id
+# DISCORD_ROLE_ID=your_role_id (optional)
 
 # Run locally
 npm run dev
@@ -52,6 +59,7 @@ npm run dev
 4. Add environment variables:
    - `DISCORD_TOKEN` (from Discord Developer Portal)
    - `DISCORD_CHANNEL_ID` (from Discord)
+   - `DISCORD_ROLE_ID` (optional - for @mentions)
 5. Railway will auto-deploy and provide a public URL (e.g., `https://your-bot.railway.app`)
 
 ### 5. Configure GitHub Webhook
